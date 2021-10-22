@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Header {
+    display: flex;
+    color: white;
+    background-color: rgb(50, 50, 235);
+    height: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+.HeaderTitle {
+    padding: 20px;
+    font-size: 24px;
+    color: white;
+}
+
+.HeaderTitle:hover {
+    cursor: pointer;
+}
+
+.Home {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.HeaderTitle:active {
+    color: black;
+}
