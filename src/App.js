@@ -4,14 +4,17 @@ import Header from './Components/Header/Header';
 import NavBar from './Components/NavBar/NavBar';
 
 const App = () => {
-    return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header />
-                <NavBar />
-            </div>
-        </BrowserRouter>
-    )
+  return (
+    <BrowserRouter>
+      <div className='app-wrapper'>
+        <Header />
+        <NavBar />
+        <div className='app-wrapper-content'>
+          
+        </div>
+      </div>
+    </BrowserRouter>
+  )
 };
 
 export default App;

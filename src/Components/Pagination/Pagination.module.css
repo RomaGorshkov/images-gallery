@@ -1,0 +1,16 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pageItem {
+    display: inline;
+    color: black;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pageItem a{
+    text-decoration: none;
+}

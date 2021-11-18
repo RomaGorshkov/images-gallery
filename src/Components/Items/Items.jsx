@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import Styles from '../Items/Items.module.css';
+import styles from '../Items/Items.module.css';
 import heart from '../../assets/heart.png';
 import { Grid } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 
-const Items = (props) => {
+const Items = ({ i: { id, author, download_url } }) => {
 
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
-    const changeCount = () => {
-        setCount(count === 0 ? count + 1 : count - 1)
-    };
+  const changeCount = () => setCount(!count ? count + 1 : count - 1);
 
-    return (
-        <Grid className={Styles.list} key={props.i.id}>
-            <Grid className={Styles.name}><h4>{props.i.author}</h4></Grid>
-            <Grid><img alt='mainPhoto' src={props.i.download_url} className={Styles.mainPhoto} /></Grid>
-            <Grid className={Styles.icons}>
-                <img alt='heart' src={heart} onClick={changeCount} />
-                <h4>{count}</h4>
-            </Grid>
-        </Grid>
-    )
+  return (
+    <Grid className={styles.list} xs={12} sm={4} md={3} key={id}>
+      <Grid className={styles.name}><h4>{author}</h4></Grid>
+      <NavLink to={'/photo/' + id}>
+        <Grid><img alt='mainPhoto' src={download_url} className={styles.mainPhoto} /></Grid>
+      </NavLink>
+      <Grid className={styles.icons}>
+        <img alt='heart' src={heart} onClick={changeCount} />
+        <h4>{count}</h4>
+      </Grid>
+    </Grid>
+  )
 }
 
 export default Items;
