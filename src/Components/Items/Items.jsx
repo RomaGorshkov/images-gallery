@@ -13,7 +13,7 @@ const Items = ({ i: { id, author, download_url } }) => {
   return (
     <Grid className={styles.list} xs={12} sm={4} md={3} key={id}>
       <Grid className={styles.name}><h4>{author}</h4></Grid>
-      <NavLink to={'/photo/' + id}>
+      <NavLink to={'/image/' + id}>
         <Grid><img alt='mainPhoto' src={download_url} className={styles.mainPhoto} /></Grid>
       </NavLink>
       <Grid className={styles.icons}>
