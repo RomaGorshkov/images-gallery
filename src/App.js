@@ -11,7 +11,7 @@ const App = () => {
 
   const [state, setState] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(6)
+  const [pageSize] = useState(6);
 
   useEffect(() => {
     axios.get('https://picsum.photos/v2/list')

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import styles from '../Pagination/Pagination.module.css';
+import { NavLink } from 'react-router-dom';
 
-const Pagination = ({ pageSize, totalImg, currentPage ,paginate }) => {
+const Pagination = ({ pageSize, totalImg, currentPage, paginate }) => {
 
   const pageNumbers = [];
 
@@ -16,7 +17,9 @@ const Pagination = ({ pageSize, totalImg, currentPage ,paginate }) => {
         {
           pageNumbers.map(number => (
             <li className={styles.pageItem} key={number}>
-              <a href='#!' className={currentPage === number && styles.pageLink} onClick={() => paginate(number)}>{number}</a>
+              <NavLink to={'/page/' + number} activeClassName={styles.activeLink}
+                className={currentPage === number && styles.pageLink}
+                onClick={() => paginate(number)}>{number}</NavLink>
             </li>
           ))
         }
