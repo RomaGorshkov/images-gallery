@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <Grid className={Styles.Header}>
             <Grid className={Styles.HeaderBody}>
-                <NavLink to='/' className={Styles.Home}>
+                <NavLink to='/page/1' className={Styles.Home}>
                     <div className={Styles.HeaderTitle}>Home</div>
                 </NavLink>
             </Grid>

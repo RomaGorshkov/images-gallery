@@ -17,7 +17,7 @@ const Pagination = ({ pageSize, totalImg, currentPage, paginate }) => {
         {
           pageNumbers.map(number => (
             <li className={styles.pageItem} key={number}>
-              <NavLink to={'/page/' + number} activeClassName={styles.activeLink}
+              <NavLink to={`/page/${number}`} activeClassName={styles.activeLink}
                 className={currentPage === number && styles.pageLink}
                 onClick={() => paginate(number)}>{number}</NavLink>
             </li>
