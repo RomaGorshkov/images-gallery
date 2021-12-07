@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Grid } from '@material-ui/core';
 import { useParams } from 'react-router';
 import Preloader from '../Common/Preloader/Preloader';
+import RelatedImages from '../RelatedImages/RelatedImages';
 
 const Item = () => {
 
@@ -24,17 +25,21 @@ const Item = () => {
   }
 
   return (
-    <Grid container className={styles.item} xs={12} key={id}>
-        <Grid className={styles.itemPhoto}>
+    <Grid  className={styles.item} key={id}>
+        <Grid container xs={12} className={styles.itemPhoto}>
           <img alt='itemMainPhoto' src={imgInfo.download_url} />
-        </Grid>
-        <Grid className={styles.itemInfo}>
+        <ul className={styles.itemInfo}>
           <li>ID: {imgInfo.id}</li>
           <li>Author: {imgInfo.author}</li>
           <li>Width: {imgInfo.width}</li>
           <li>Height: {imgInfo.height}</li>
           <li>URL: {imgInfo.url}</li>
+        </ul>
         </Grid>
+        <Grid container className={styles.relatedImg}>
+        <h2>Related images</h2>
+          <RelatedImages />
+      </Grid>
     </Grid>
   )
 }

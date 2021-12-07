@@ -1,0 +1,10 @@
+.RelatedImg{
+    display: flex;
+    justify-content: center;
+}
+
+.RelatedImg img{
+    padding: 10px;
+    width: 200px;
+    height: 100px;
+}

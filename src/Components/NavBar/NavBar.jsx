@@ -4,26 +4,37 @@ import styles from './NavBar.module.css';
 import Items from '../Items/Items';
 import axios from 'axios';
 import Preloader from '../Common/Preloader/Preloader';
-import Pagination from '../Pagination/Pagination';
 
 const NavBar = () => {
 
   const [state, setState] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(6);
+  const [fetching, setFetching] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
-    axios.get('https://picsum.photos/v2/list')
-      .then(resp => {
-        setState(resp.data);
-      });
-  }, []);
+    if(fetching) {
+      axios.get( `https://picsum.photos/v2/list?page=${currentPage}&limit=10`)
+        .then(resp => {
+          setState([...state, ...resp.data]);
+          setCurrentPage(prevState => prevState + 1);
+          setTotalCount(resp.headers['x-total-count'])
+        })
+        .finally(() => setFetching(false))
+    }
+  }, [fetching]);
 
-  const lastImgIndex = currentPage * pageSize;
-  const firstImgIndex = lastImgIndex - pageSize;
-  const currentImg = state.slice(firstImgIndex, lastImgIndex);
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandel);
+    return function() {
+      document.removeEventListener('scroll', scrollHandel)
+    };
+  }, [])
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const scrollHandel = (e) => {
+    if(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop * window.innerHeight) < 150 )
+    setFetching(true)
+  }
 
   if (!state.length) {
     return <Preloader />
@@ -32,13 +43,9 @@ const NavBar = () => {
   return (
     <Grid className={styles.NavBar}>
       <Grid container className={styles.body} >
-        {currentImg.map(i =>
+        {state.map(i =>
           <Items i={i} />
         )}
-          <Pagination pageSize={pageSize}
-            totalImg={state.length}
-            currentPage={currentPage}
-            paginate={paginate} />
       </Grid>
     </Grid>
   )

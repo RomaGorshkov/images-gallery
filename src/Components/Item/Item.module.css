@@ -1,18 +1,19 @@
-.item {
-    display: flex;
-    justify-content: center;
-}
-
 .itemPhoto {
+    justify-content: center;
+    display: flex;
     padding: 10px;
 }
 
 .itemPhoto img{
-    width: 100%;
+    min-width: 50%;
     height: 400px;
 }
 
 .itemInfo{
     list-style-type: none;
     padding: 10px;
+}
+
+.relatedImg {
+    justify-content: center;
 }
